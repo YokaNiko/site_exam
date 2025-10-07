@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr" class="theme-dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>URL — Environnement et technologie web</title>
+    <meta name="description"
+        content="Définition d’URL, schéma, paramètres de requête, codes HTTP (200, 301, 302, 404, 500), exemples valides/invalides et bonnes pratiques." />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- GSAP + ScrollTrigger (optionnel, déjà utilisé ailleurs) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+    <!-- JS modulaire -->
+    <script src="js/theme.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/animations.js" defer></script>
+</head>
+
+<body data-page="url">
+    <div id="top" hidden></div>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Accueil">🌐 Examen d'ETW</a>
+
+            <nav class="site-nav" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="historique.html">Historique</a></li>
+                    <li aria-current="page"><a href="url.html">URL</a></li>
+                    <li><a href="web.html">Standards du Web</a></li>
+                    <li><a href="securite.html">Sécurité</a></li>
+                    <li><a href="sources.html">A propos</a></li>
+                </ul>
+            </nav>
+
+            <button id="btn-theme" class="btn-theme" aria-label="Basculer le mode d’affichage" title="Mode">
+                🌙 <span class="sr-only">Basculer dark/light</span>
+            </button>
+        </div>
+
+        <!-- Fil d’Ariane masqué visuellement (reste accessible) -->
+        <nav class="breadcrumbs visually-hidden" aria-label="Fil d’Ariane">
+            <ol class="container">
+                <li><a href="index.html">Accueil</a></li>
+                <li aria-current="page">URL</li>
+            </ol>
+        </nav>
+    </header>
+
+    <main id="contenu" tabindex="-1">
+        <section class="hero reveal" aria-labelledby="titre-url">
+            <div class="container">
+                <h1 id="titre-url">URL : structure, requêtes et codes HTTP</h1>
+                <p>Tout ce qu'il faut pour comprendre les adresses web et les messages du navigateur</p>
+            </div>
+        </section>
+
+        <!-- Qu'est-ce qu'une URL ? -->
+        <section class="reveal" aria-labelledby="def-url">
+            <div class="container">
+                <h2 id="def-url">Qu'est-ce qu'une URL ?</h2>
+
+                <div class="analogie">
+                    <div class="analogie-visuel">
+                        <div class="analogie-element">🏠 Adresse postale</div>
+                        <div class="analogie-fleche">→</div>
+                        <div class="analogie-element">🌐 Adresse web (URL)</div>
+                    </div>
+                    <p>Comme une adresse postale indique où se trouve une maison, une URL indique où se trouve une page
+                        web.</p>
+                </div>
+
+                <div class="url-exemple mono">
+                    <span class="url-partie" data-color="accent">https://</span>
+                    <span class="url-partie" data-color="success">www.exemple.com</span>
+                    <span class="url-partie" data-color="warning">/blog/article</span>
+                    <span class="url-partie" data-color="primary">?id=123</span>
+                    <span class="url-partie" data-color="focus">#section1</span>
+                </div>
+
+                <div class="grid-2">
+                    <div><span class="url-partie-label" data-color="accent">Protocole</span> (comment accéder)</div>
+                    <div><span class="url-partie-label" data-color="success">Nom du site</span> (où se trouve)</div>
+                    <div><span class="url-partie-label" data-color="warning">Chemin</span> (quelle page)</div>
+                    <div><span class="url-partie-label" data-color="primary">Paramètres</span> (options supplémentaires)
+                    </div>
+                    <div><span class="url-partie-label" data-color="focus">Ancre</span> (section spécifique)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Les paramètres d'URL -->
+        <section class="reveal" aria-labelledby="params">
+            <div class="container">
+                <h2 id="params">Les paramètres d'URL</h2>
+                <p>Les paramètres sont comme des options supplémentaires qu'on donne au site web.</p>
+
+                <div class="note">
+                    <div class="exemple-titre">Exemple de recherche :</div>
+                    <div class="exemple-url mono">https://www.google.com/search?q=chatons+mignons</div>
+                    <div class="exemple-explication">
+                        Ici, le paramètre <code>q</code> (pour "query" ou requête) indique ce que vous cherchez :
+                        "chatons mignons"
+                    </div>
+                </div>
+
+                <div class="conseil">
+                    <h3>À retenir :</h3>
+                    <ul>
+                        <li>Commence toujours par <code>?</code></li>
+                        <li>Les paramètres sont séparés par <code>&amp;</code></li>
+                        <li>Format : <code>nom=valeur</code></li>
+                        <li>Les espaces sont remplacés par <code>+</code> ou <code>%20</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Les codes HTTP -->
+        <section class="reveal" aria-labelledby="codes-http">
+            <div class="container">
+                <h2 id="codes-http">Les messages du serveur (codes HTTP)</h2>
+                <p>Quand vous demandez une page, le serveur répond avec un code qui indique ce qui se passe.</p>
+
+                <div class="codes-simples">
+                    <div class="code-item success">
+                        <div class="code-number">200</div>
+                        <div class="code-description">Tout va bien, la page est affichée</div>
+                    </div>
+
+                    <div class="code-item redirect">
+                        <div class="code-number">301</div>
+                        <div class="code-description">Déménagement définitif (mettre à jour vos favoris)</div>
+                    </div>
+
+                    <div class="code-item redirect">
+                        <div class="code-number">302</div>
+                        <div class="code-description">Déménagement temporaire (revenir plus tard)</div>
+                    </div>
+
+                    <div class="code-item error">
+                        <div class="code-number">404</div>
+                        <div class="code-description">Page introuvable (erreur d'URL ou page supprimée)</div>
+                    </div>
+
+                    <div class="code-item error">
+                        <div class="code-number">500</div>
+                        <div class="code-description">Problème serveur (réessayer plus tard)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Redirections 301 vs 302 -->
+        <section class="reveal" aria-labelledby="redirections">
+            <div class="container">
+                <h2 id="redirections">Redirections : Déménagement permanent vs temporaire</h2>
+
+                <div class="grid-2">
+                    <div class="comparaison-item">
+                        <h3>301 - Déménagement définitif</h3>
+                        <p>Comme changer d'adresse et prévenir la poste de votre nouvelle adresse.</p>
+                        <ul>
+                            <li>La page a définitivement changé d'adresse</li>
+                            <li>Les moteurs de recherche mettent à jour leur index</li>
+                            <li>Les favoris doivent être mis à jour</li>
+                        </ul>
+                        <div class="exemple mono">http://monsite.com → https://monsite.com</div>
+                    </div>
+
+                    <div class="comparaison-item">
+                        <h3>302 - Déménagement temporaire</h3>
+                        <p>Comme être en vacances chez un ami pour quelques jours.</p>
+                        <ul>
+                            <li>Redirection temporaire</li>
+                            <li>L'adresse originale reste la bonne</li>
+                            <li>Les moteurs de recherche gardent l'originale</li>
+                        </ul>
+                        <div class="exemple mono">Redirection pendant des travaux sur le site</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bonnes pratiques -->
+        <section class="reveal" aria-labelledby="bonnes-pratiques">
+            <div class="container">
+                <h2 id="bonnes-pratiques">Conseils pour de bonnes URL</h2>
+
+                <div class="conseils">
+                    <div class="conseil-item">
+                        <div class="conseil-icone">✔️</div>
+                        <div class="conseil-texte">Utilisez des mots clés dans le chemin :<br>
+                            <span class="bon-exemple mono">/recettes/gateau-chocolat</span> au lieu de
+                            <span class="mauvais-exemple mono">/page123?id=45</span>
+                        </div>
+                    </div>
+
+                    <div class="conseil-item">
+                        <div class="conseil-icone">✔️</div>
+                        <div class="conseil-texte">Restez cohérent avec les slashs finaux :<br>
+                            Choisissez <span class="bon-exemple mono">/dossier/</span> ou <span
+                                class="bon-exemple mono">/dossier</span> et tenez-vous y
+                        </div>
+                    </div>
+
+                    <div class="conseil-item">
+                        <div class="conseil-icone">✔️</div>
+                        <div class="conseil-texte">Utilisez le HTTPS pour la sécurité</div>
+                    </div>
+
+                    <div class="conseil-item">
+                        <div class="conseil-icone">✔️</div>
+                        <div class="conseil-texte">Évitez les caractères spéciaux et les espaces</div>
+                    </div>
+
+                    <div class="conseil-item">
+                        <div class="conseil-icone">❌</div>
+                        <div class="conseil-texte">N'utilisez jamais d'informations sensibles dans les URL</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Résumé -->
+        <section class="resume reveal">
+            <div class="container">
+                <h2>En résumé</h2>
+                <div class="resume-points grid-2">
+                    <div class="resume-point">
+                        <div class="resume-icone">1</div>
+                        <div class="resume-texte">Une URL est comme une adresse qui indique où se trouve une page web
+                        </div>
+                    </div>
+                    <div class="resume-point">
+                        <div class="resume-icone">2</div>
+                        <div class="resume-texte">Les paramètres servent à donner des options supplémentaires au site
+                        </div>
+                    </div>
+                    <div class="resume-point">
+                        <div class="resume-icone">3</div>
+                        <div class="resume-texte">Les codes HTTP sont des messages du serveur pour dire ce qui se passe
+                        </div>
+                    </div>
+                    <div class="resume-point">
+                        <div class="resume-icone">4</div>
+                        <div class="resume-texte">301 = déménagement définitif, 302 = déménagement temporaire</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="#top" class="to-top" aria-label="Remonter en haut">↑</a>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <p>© <span id="year"></span> — Environnement et technologie web - BES Webdesign UX/UI - IFOSUP Wavre -
+                N.Vandervoordt.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

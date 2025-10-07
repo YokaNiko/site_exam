@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr" class="theme-dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Qui fait les règles du Web ? — Et pourquoi ça évite le chaos</title>
+    <meta name="description"
+        content="Explication simple: W3C, WHATWG, IETF, TC39, Unicode. Comment naît une fonctionnalité Web. Pourquoi les standards évitent le chaos. Conseils concrets pour les projets." />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- GSAP + ScrollTrigger (déférés) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+    <!-- JS modulaire -->
+    <script src="js/theme.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/animations.js" defer></script>
+</head>
+
+<body data-page="web">
+    <div id="top" hidden></div>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Accueil">🌐 Examen d'ETW</a>
+
+            <nav class="site-nav" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="historique.html">Historique</a></li>
+                    <li><a href="url.html">URL</a></li>
+                    <li aria-current="page"><a href="web.html">Standards du Web</a></li>
+                    <li><a href="securite.html">Sécurité</a></li>
+                    <li><a href="sources.html">A propos</a></li>
+                </ul>
+            </nav>
+
+            <button id="btn-theme" class="btn-theme" aria-label="Basculer le mode d’affichage" title="Mode">
+                🌙 <span class="sr-only">Basculer dark/light</span>
+            </button>
+        </div>
+
+        <nav class="breadcrumbs visually-hidden" aria-label="Fil d’Ariane">
+            <ol class="container">
+                <li><a href="index.html">Accueil</a></li>
+                <li aria-current="page">Standards du Web</li>
+            </ol>
+        </nav>
+    </header>
+
+    <main id="contenu" tabindex="-1">
+        <!-- HERO -->
+        <section class="hero reveal" aria-labelledby="titre-web">
+            <div class="container">
+                <h1 id="titre-web">Qui fait les règles du Web, et pourquoi ça évite le chaos</h1>
+                <p class="lead">Le Web est un gigantesque accord commun. Sans règles partagées, chaque site, chaque
+                    navigateur et chaque pays fonctionnerait différemment. Voici l’explication la plus simple possible.
+                </p>
+            </div>
+        </section>
+
+        <!-- POURQUOI DES RÈGLES -->
+        <section class="reveal" aria-labelledby="pourquoi">
+            <div class="container">
+                <h2 id="pourquoi">Pourquoi des règles ?</h2>
+                <div class="note">
+                    <p>Imagine la route sans code de la route: panneaux différents, voitures qui tournent à gauche ou à
+                        droite “au feeling”, feux rouges parfois verts… Résultat: chaos, accidents, embouteillages.</p>
+                    <p>Sur le Web, c’est pareil: les <strong>standards</strong> sont notre “code de la route”. Ils
+                        garantissent que:</p>
+                    <ul>
+                        <li>une page s’affiche pareil sur différents navigateurs,</li>
+                        <li>les personnes avec lecteurs d’écran comprennent le contenu,</li>
+                        <li>les sites restent consultables pendant des années.</li>
+                    </ul>
+                </div>
+
+                <div class="diagram" role="img"
+                    aria-label="Schéma simple de l'écosystème: créateurs ↔ standards ↔ navigateurs ↔ internautes">
+                    <pre class="code">
+[ Créateurs de sites ]
+          ↓ proposent des idées
+[ Groupes de standards ] — écrivent les règles
+          ↓
+[ Navigateurs ] — implémentent
+          ↓
+[ Internautes ] — ça marche partout 😄
+</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUI FAIT QUOI (ULTRA SIMPLE) -->
+        <section class="reveal" aria-labelledby="roles">
+            <div class="container">
+                <h2 id="roles">Qui fait quoi (version ultra simple)</h2>
+
+                <div class="cards cards--roles grid-2">
+                    <article>
+                        <h3>W3C</h3>
+                        <p>Écrit des règles pour <strong>HTML</strong>, <strong>CSS</strong>, l’accessibilité
+                            (<strong>ARIA</strong>), etc. Pense “structure, styles, accessibilité”.</p>
+                    </article>
+
+                    <article>
+                        <h3>WHATWG</h3>
+                        <p>Entretient la version “vivante” de <strong>HTML</strong> et des <strong>URL</strong> (mise à
+                            jour en continu).</p>
+                    </article>
+
+                    <article>
+                        <h3>IETF</h3>
+                        <p>Définit les <strong>protocoles réseau</strong> (ex: <strong>HTTP</strong>,
+                            <strong>TLS</strong>). Pense “comment les données voyagent”.</p>
+                    </article>
+
+                    <article>
+                        <h3>ECMA / TC39</h3>
+                        <p>Fait évoluer <strong>JavaScript</strong> (ECMAScript). Les idées passent par des
+                            “<em>stages</em>” avant d’être adoptées.</p>
+                    </article>
+
+                    <article>
+                        <h3>Unicode Consortium</h3>
+                        <p>Gère l’<strong>encodage des caractères</strong> (UTF‑8) et les <strong>émojis</strong>.
+                            Permet d’écrire toutes les langues.</p>
+                    </article>
+
+                    <article>
+                        <h3>Navigateurs</h3>
+                        <p>Chrome/Edge (Chromium), Firefox (Gecko), Safari (WebKit) <em>appliquent</em> les règles et
+                            les rendent utilisables.</p>
+                    </article>
+                </div>
+
+                <div class="mini-synthese note" aria-labelledby="enbref1">
+                    <h3 id="enbref1">En bref</h3>
+                    <ul>
+                        <li>W3C/WHATWG: structure du Web (HTML/CSS/URL/ARIA).</li>
+                        <li>IETF: comment circulent les infos (HTTP/TLS).</li>
+                        <li>TC39: le langage du navigateur (JavaScript).</li>
+                        <li>Unicode: on peut tout écrire correctement.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMENT NAÎT UNE FONCTIONNALITÉ -->
+        <section class="reveal" aria-labelledby="processus">
+            <div class="container">
+                <h2 id="processus">Comment naît une fonctionnalité Web</h2>
+
+                <ol class="timeline-list">
+                    <li>
+                        <article>
+                            <strong>1) Problème réel</strong> — Ex: “Les formulaires sont durs à remplir sur mobile.”
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <strong>2) Idée</strong> — Des devs et des éditeurs de navigateurs proposent une solution
+                            (ex: nouvel input).
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <strong>3) Spécification</strong> — Le groupe (W3C/WHATWG/TC39…) écrit la règle précise, cas
+                            par cas.
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <strong>4) Implémentation</strong> — Les navigateurs testent, corrigent, alignent les
+                            comportements.
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <strong>5) Dispo pour tous</strong> — Les devs peuvent l’utiliser. On garde des
+                            <em>fallbacks</em> au début.
+                        </article>
+                    </li>
+                </ol>
+
+                <div class="note">
+                    <p><strong>But:</strong> éviter que chaque navigateur invente sa version. Une seule règle claire =
+                        moins de bugs, sites plus durables.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CE QUE ÇA CHANGE POUR TOI -->
+        <section class="reveal" aria-labelledby="pratique">
+            <div class="container">
+                <h2 id="pratique">Ce que ça change pour toi en projet</h2>
+
+                <div class="grid-2">
+                    <div class="comparaison-item">
+                        <h3>À faire</h3>
+                        <ul>
+                            <li>Utiliser les <strong>balises sémantiques</strong> HTML (header, nav, main, article,
+                                footer).</li>
+                            <li>Écrire du <strong>CSS moderne</strong> avec des <code>@supports</code> pour tester une
+                                feature.</li>
+                            <li>Écrire du <strong>JS standard</strong> (modules ES, <code>async/await</code>).</li>
+                            <li>Penser <strong>accessibilité</strong> (labels, roles ARIA seulement si nécessaire).</li>
+                            <li>Tester sur plusieurs <strong>moteurs</strong> (Chromium, Gecko, WebKit).</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparaison-item">
+                        <h3>À éviter</h3>
+                        <ul>
+                            <li>Inventer des solutions non standard “qui marchent que chez moi”.</li>
+                            <li>Remplacer la sémantique par l’ARIA (ARIA ne corrige pas une mauvaise structure).</li>
+                            <li>Dépendre d’une API non supportée sans alternative.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exemples">
+                    <h3>Exemples ultra courts</h3>
+
+                    <article class="note">
+                        <h4>Balises sémantiques de base</h4>
+                        <pre><code>&lt;header&gt;…&lt;/header&gt;
+&lt;nav aria-label="Navigation principale"&gt;…&lt;/nav&gt;
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;h1&gt;Titre clair&lt;/h1&gt;
+    &lt;p&gt;Contenu accessible.&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+&lt;footer&gt;…&lt;/footer&gt;</code></pre>
+                    </article>
+
+                    <article class="note">
+                        <h4>CSS avec garde-fou (@supports)</h4>
+                        <pre><code>@supports (selector(:has(*))) {
+  /* Styles avancés ici, activés seulement si :has est supporté */
+}</code></pre>
+                    </article>
+
+                    <article class="note">
+                        <h4>Bouton accessible (ARIA minimale)</h4>
+                        <pre><code>&lt;button aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu"&gt;☰&lt;/button&gt;</code></pre>
+                    </article>
+                </div>
+
+                <div class="conseil">
+                    <h3>Check 1 minute avant de livrer</h3>
+                    <ul>
+                        <li>Tout est compréhensible au clavier + lecteur d’écran ?</li>
+                        <li>Fonctionne sur au moins 2 navigateurs différents ?</li>
+                        <li>Les images ont un <code>alt</code> utile ? Les médias ont des sous-titres/transcripts ?</li>
+                        <li>Les features récentes ont une alternative (progressive enhancement) ?</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- RÉCAP -->
+        <section class="reveal resume" aria-labelledby="recap">
+            <div class="container">
+                <h2 id="recap">Récap en 15 secondes</h2>
+                <div class="resume-points grid-2">
+                    <div class="resume-point">
+                        <div class="resume-icone">1</div>
+                        <div><strong>Sans standards = chaos.</strong> Avec standards = sites lisibles partout,
+                            longtemps.</div>
+                    </div>
+                    <div class="resume-point">
+                        <div class="resume-icone">2</div>
+                        <div><strong>Rôles clairs:</strong> W3C/WHATWG (HTML/CSS/URL/ARIA), IETF (HTTP/TLS), TC39 (JS),
+                            Unicode (écriture).</div>
+                    </div>
+                    <div class="resume-point">
+                        <div class="resume-icone">3</div>
+                        <div><strong>Processus:</strong> idée → règle → navigateurs → nous.</div>
+                    </div>
+                    <div class="resume-point">
+                        <div class="resume-icone">4</div>
+                        <div><strong>En pratique:</strong> sémantique, ARIA minimale, tests multi‑navigateurs,
+                            alternatives si feature manquante.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="#top" class="to-top" aria-label="Remonter en haut">↑</a>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <p>© <span id="year"></span> — Environnement et technologie web - BES Webdesign UX/UI - IFOSUP Wavre -
+                N.Vandervoordt.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

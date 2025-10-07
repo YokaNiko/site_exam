@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr" class="theme-dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home — Environnement et technologie web</title>
+    <meta name="description"
+        content="Site pédagogique pour réviser l’examen d’Environnement et technologie web : standards, URL, historique et sécurité." />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="CSS/style.css" />
+
+    <!-- GSAP + ScrollTrigger (déférés) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+
+    <!-- JS modulaire -->
+    <script src="Js/theme.js" defer></script>
+    <script src="Js/ui.js" defer></script>
+    <script src="Js/animations.js" defer></script>
+</head>
+
+<body data-page="home">
+    <div id="top" hidden></div>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Accueil">🌐 Examen d'ETW</a>
+
+            <nav class="site-nav" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="historique.html">Historique</a></li>
+                    <li><a href="url.html">URL</a></li>
+                    <li><a href="web.html">Standards du Web</a></li>
+                    <li><a href="securite.html">Sécurité</a></li>
+                    <li><a href="sources.html">A propos</a></li>
+                </ul>
+            </nav>
+
+            <button id="btn-theme" class="btn-theme" aria-label="Basculer le mode d’affichage" title="Mode">
+                🌙 <span class="sr-only">Basculer dark/light</span>
+            </button>
+        </div>
+    </header>
+
+    <main id="contenu" tabindex="-1">
+        <section class="hero reveal" aria-labelledby="titre-hero">
+            <div class="container">
+                <h1 id="titre-hero">Bienvenue sur mon site pour l’examen d’Environnement et technologie web</h1>
+                <p class="lead">Révisez l’essentiel : historique du Web, structure des URL, rôles des standards et
+                    sécurité côté utilisateur/développeur. Contenu concis, fiable et illustré d’exemples.</p>
+
+                <!-- Image spécifique à la home -->
+                <figure class="hero-media reveal">
+                    <img class="hero-img" src="images/img_index.png"
+                        alt="Illustration d’accueil représentant les technologies et standards du Web"
+                        decoding="async" />
+                    <figcaption class="visually-hidden">Image d’accueil du site Environnement et technologie web.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+
+    <a href="#top" class="to-top" aria-label="Remonter en haut">↑</a>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <p>© <span id="year"></span> — Environnement et technologie web - BES Webdesign UX/UI - IFOSUP Wavre -
+                N.Vandervoordt.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

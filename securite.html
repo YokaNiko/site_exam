@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr" class="theme-dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sécurité Web — Environnement et technologie web</title>
+    <meta name="description"
+        content="Comprendre les risques sur internet : attaques courantes (phishing, malware, brute force) et bonnes pratiques de sécurité." />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- GSAP + ScrollTrigger via CDN (déférés) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+    <!-- JS modulaire -->
+    <script src="js/theme.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/animations.js" defer></script>
+</head>
+
+<body data-page="securite">
+    <div id="top" hidden></div>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Accueil">🌐 Examen d'ETW</a>
+
+            <nav class="site-nav" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="historique.html">Historique</a></li>
+                    <li><a href="url.html">URL</a></li>
+                    <li><a href="web.html">Standards du Web</a></li>
+                    <li aria-current="page"><a href="securite.html">Sécurité</a></li>
+                    <li><a href="sources.html">A propos</a></li>
+                </ul>
+            </nav>
+
+            <button id="btn-theme" class="btn-theme" aria-label="Basculer le mode d’affichage" title="Mode">
+                🌙 <span class="sr-only">Basculer dark/light</span>
+            </button>
+        </div>
+
+        <!-- Fil d’Ariane masqué visuellement (reste accessible) -->
+        <nav class="breadcrumbs visually-hidden" aria-label="Fil d’Ariane">
+            <ol class="container">
+                <li><a href="index.html">Accueil</a></li>
+                <li aria-current="page">Sécurité</li>
+            </ol>
+        </nav>
+    </header>
+
+    <main id="contenu" tabindex="-1">
+        <!-- HERO -->
+        <section class="hero reveal" aria-labelledby="titre-secu">
+            <div class="container">
+                <h1 id="titre-secu">Sécurité du web</h1>
+                <p>Protégez-vous contre les menaces courantes sur internet avec des explications simples et des conseils pratiques.</p>
+                <ul class="meta">
+                    <li>Comprendre les risques → Savoir les reconnaître → Adopter les bonnes pratiques</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- INTRODUCTION -->
+        <section class="reveal" aria-labelledby="introduction">
+            <div class="container">
+                <h2 id="introduction">Pourquoi la sécurité est importante ?</h2>
+                <p>Internet est comme une grande ville : il y a beaucoup de bonnes choses, mais aussi des risques. La
+                    sécurité web vous protège contre :</p>
+                <ul>
+                    <li><strong>Le vol de vos données</strong> (mots de passe, informations bancaires)</li>
+                    <li><strong>L'usurpation d'identité</strong></li>
+                    <li><strong>Les virus et logiciels malveillants</strong></li>
+                    <li><strong>Les arnaques financières</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ATTAQUES COURANTES -->
+        <section class="reveal" aria-labelledby="attaques">
+            <div class="container">
+                <h2 id="attaques">Attaques courantes - Savoir les reconnaître</h2>
+
+                <!-- Phishing -->
+                <article class="attaque-card">
+                    <div class="attaque-header">
+                        <span class="attaque-icon">🎣</span>
+                        <h3>Phishing (Hameçonnage)</h3>
+                    </div>
+                    <p>Une tentative de vol de vos informations personnelles en se faisant passer pour une source de
+                        confiance.</p>
+                    <div class="exemple-pratique">
+                        <p class="exemple-titre">Exemple typique :</p>
+                        <p>Vous recevez un email qui ressemble à celui de votre banque :</p>
+                        <p><em>"Votre compte a été bloqué. Cliquez ici pour le réactiver."</em></p>
+                        <p class="exemple-explication">En cliquant, vous arrivez sur un faux site qui ressemble à celui
+                            de votre banque, où on vous demande vos identifiants.</p>
+                    </div>
+                    <div class="conseil">
+                        <h4>Comment se protéger :</h4>
+                        <ul>
+                            <li>Vérifiez toujours l'adresse email de l'expéditeur</li>
+                            <li>Ne cliquez pas sur les liens dans les emails suspects</li>
+                            <li>Si un message vous semble étrange, contactez directement l'organisation concernée</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Malware -->
+                <article class="attaque-card">
+                    <div class="attaque-header">
+                        <span class="attaque-icon">🦠</span>
+                        <h3>Malware (Logiciels malveillants)</h3>
+                    </div>
+                    <p>Programmes conçus pour endommager votre appareil ou voler vos données.</p>
+                    <div class="exemple-pratique">
+                        <p class="exemple-titre">Exemples :</p>
+                        <ul>
+                            <li><strong>Virus</strong> : Se propage et endommage vos fichiers</li>
+                            <li><strong>Ransomware</strong> : Crypte vos fichiers et demande une rançon</li>
+                            <li><strong>Spyware</strong> : Espionne vos activités et vole vos informations</li>
+                        </ul>
+                    </div>
+                    <div class="conseil">
+                        <h4>Comment se protéger :</h4>
+                        <ul>
+                            <li>Installez un bon antivirus et maintenez-le à jour</li>
+                            <li>Ne téléchargez pas de logiciels depuis des sites non officiels</li>
+                            <li>Méfiez-vous des pièces jointes inattendues</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Brute Force -->
+                <article class="attaque-card">
+                    <div class="attaque-header">
+                        <span class="attaque-icon">🔑</span>
+                        <h3>Attaque par Force Brute</h3>
+                    </div>
+                    <p>Essaie toutes les combinaisons possibles pour deviner votre mot de passe.</p>
+                    <div class="exemple-pratique">
+                        <p class="exemple-titre">Comment ça marche :</p>
+                        <p>Un pirate utilise un programme qui essaye automatiquement des milliers de combinaisons :</p>
+                        <p><em>123456, password, azerty, qwerty, votreprénom123...</em></p>
+                        <p>Jusqu'à trouver le bon mot de passe.</p>
+                    </div>
+                    <div class="conseil">
+                        <h4>Comment se protéger :</h4>
+                        <ul>
+                            <li>Utilisez des mots de passe <strong>longs et complexes</strong></li>
+                            <li>Activez la <strong>double authentification</strong> quand c'est possible</li>
+                            <li>Changez vos mots de passe régulièrement</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Scraping vs Abus -->
+                <article class="attaque-card">
+                    <div class="attaque-header">
+                        <span class="attaque-icon">🤖</span>
+                        <h3>Scraping vs Abus de ressources</h3>
+                    </div>
+                    <div class="comparaison">
+                        <div class="comparaison-item">
+                            <h4>Scraping</h4>
+                            <p>Copie automatique de données d'un site web, souvent pour les réutiliser ailleurs.</p>
+                            <p class="exemple"><strong>Exemple :</strong> Copier tous les prix d'un site concurrent.</p>
+                        </div>
+                        <div class="comparaison-item">
+                            <h4>Abus de ressources</h4>
+                            <p>Utilisation abusive des ressources d'un site (bande passante, puissance de calcul).</p>
+                            <p class="exemple"><strong>Exemple :</strong> Envoyer des milliers de requêtes pour faire
+                                planter un site.</p>
+                        </div>
+                    </div>
+                    <div class="conseil">
+                        <h4>Comment se protéger :</h4>
+                        <ul>
+                            <li>Utilisez des CAPTCHAs pour les formulaires sensibles</li>
+                            <li>Limitez le nombre de requêtes autorisées par utilisateur</li>
+                            <li>Surveillez les activités suspectes sur votre site</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- BONNES PRATIQUES -->
+        <section class="reveal" aria-labelledby="pratiques">
+            <div class="container">
+                <h2 id="pratiques">Bonnes pratiques de sécurité</h2>
+
+                <div class="conseils">
+                    <div class="conseil-item">
+                        <span class="conseil-icone">🔒</span>
+                        <div>
+                            <h3>Mots de passe solides</h3>
+                            <p>Utilisez des mots de passe uniques pour chaque compte, avec des lettres, chiffres et
+                                symboles.</p>
+                            <p><span class="bon-exemple">Bon : Tr0ub4d0ur&3!</span><br>
+                                <span class="mauvais-exemple">Mauvais : password123</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="conseil-item">
+                        <span class="conseil-icone">🔄</span>
+                        <div>
+                            <h3>Mises à jour régulières</h3>
+                            <p>Toujours installer les mises à jour de votre système, navigateur et applications.</p>
+                            <p>Elles corrigent souvent des failles de sécurité.</p>
+                        </div>
+                    </div>
+
+                    <div class="conseil-item">
+                        <span class="conseil-icone">✅</span>
+                        <div>
+                            <h3>Double authentification</h3>
+                            <p>Activez-la pour ajouter une couche de sécurité supplémentaire.</p>
+                            <p>Même si quelqu'un vole votre mot de passe, il ne pourra pas accéder à votre compte.</p>
+                        </div>
+                    </div>
+
+                    <div class="conseil-item">
+                        <span class="conseil-icone">🔗</span>
+                        <div>
+                            <h3>HTTPS partout</h3>
+                            <p>Vérifiez que l'adresse commence par <code>https://</code> avant de saisir des
+                                informations sensibles.</p>
+                            <p>Le cadenas <span style="font-size:1.2em">🔒</span> dans la barre d'adresse indique une
+                                connexion sécurisée.</p>
+                        </div>
+                    </div>
+
+                    <div class="conseil-item">
+                        <span class="conseil-icone">🧹</span>
+                        <div>
+                            <h3>Sauvegardes régulières</h3>
+                            <p>Faites des sauvegardes de vos fichiers importants sur un disque externe ou dans le cloud.
+                            </p>
+                            <p>En cas d'attaque, vous ne perdrez pas vos données.</p>
+                        </div>
+                    </div>
+
+                    <div class="conseil-item">
+                        <span class="conseil-icone">👀</span>
+                        <div>
+                            <h3>Soyez vigilant</h3>
+                            <p>Méfiez-vous des offres trop belles pour être vraies, des emails alarmistes et des
+                                demandes étranges.</p>
+                            <p>Si quelque chose semble suspect, il vaut mieux éviter.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAS PRATIQUES -->
+        <section class="reveal" aria-labelledby="cas">
+            <div class="container">
+                <h2 id="cas">Cas pratiques - Que faire si...</h2>
+
+                <div class="scenarios">
+                    <div class="scenario">
+                        <h3>...vous recevez un email suspect ?</h3>
+                        <ol>
+                            <li>Ne cliquez sur aucun lien ni pièce jointe</li>
+                            <li>Vérifiez l'adresse de l'expéditeur</li>
+                            <li>Contactez l'organisation concernée par un autre canal</li>
+                            <li>Supprimez l'email</li>
+                        </ol>
+                    </div>
+
+                    <div class="scenario">
+                        <h3>...vous pensez que votre mot de passe est compromis ?</h3>
+                        <ol>
+                            <li>Changez-le immédiatement</li>
+                            <li>Activez la double authentification si ce n'est pas fait</li>
+                            <li>Vérifiez les activités récentes sur votre compte</li>
+                            <li>Si c'est un mot de passe réutilisé ailleurs, changez-le partout</li>
+                        </ol>
+                    </div>
+
+                    <div class="scenario">
+                        <h3>...vous avez cliqué sur un lien suspect ?</h3>
+                        <ol>
+                            <li>Déconnectez-vous de tous vos comptes importants</li>
+                            <li>Lancez une analyse antivirus complète</li>
+                            <li>Surveillez vos comptes bancaires pour toute activité suspecte</li>
+                            <li>Changez vos mots de passe</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RÉSUMÉ -->
+        <section class="reveal" aria-labelledby="resume">
+            <div class="container">
+                <div class="resume">
+                    <h2 id="resume">En résumé</h2>
+                    <div class="resume-points">
+                        <div class="resume-point">
+                            <div class="resume-icone">1</div>
+                            <div>
+                                <h3>Restez vigilant</h3>
+                                <p>Méfiez-vous des messages inattendus et des offres trop belles</p>
+                            </div>
+                        </div>
+
+                        <div class="resume-point">
+                            <div class="resume-icone">2</div>
+                            <div>
+                                <h3>Protégez vos accès</h3>
+                                <p>Mots de passe forts + double authentification</p>
+                            </div>
+                        </div>
+
+                        <div class="resume-point">
+                            <div class="resume-icone">3</div>
+                            <div>
+                                <h3>Maintenez vos systèmes à jour</h3>
+                                <p>Installez toujours les mises à jour de sécurité</p>
+                            </div>
+                        </div>
+
+                        <div class="resume-point">
+                            <div class="resume-icone">4</div>
+                            <div>
+                                <h3>Sauvegardez vos données</h3>
+                                <p>Préparez-vous au pire pour ne pas tout perdre</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="#top" class="to-top" aria-label="Remonter en haut">↑</a>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <p>© <span id="year"></span> — Environnement et technologie web - BES Webdesign UX/UI - IFOSUP Wavre -
+                N.Vandervoordt.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

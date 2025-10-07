@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr" class="theme-dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Sources — Environnement et technologie web</title>
+    <meta name="description"
+        content="Informations à propos de la réalisation du site pour l’examen d’Environnement et technologie web." />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- GSAP + ScrollTrigger via CDN (déférés) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+    <!-- JS modulaire -->
+    <script src="js/theme.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/animations.js" defer></script>
+
+    <!-- Styles additionnels (cartes avantages / inconvénients) -->
+    <style>
+        /* Palette et tokens */
+        :root {
+            --surface: #ffffff;
+            --text: #0f172a;
+            --muted: #475569;
+            --stroke: #e2e8f0;
+            --ok-500: #16a34a;
+            --bad-500: #ea580c;
+            --ok-bg: #ecfdf5;
+            --bad-bg: #fff7ed;
+        }
+
+        .theme-dark {
+            --surface: #0b1220;
+            --text: #e5e7eb;
+            --muted: #94a3b8;
+            --stroke: #1e293b;
+            --ok-500: #22c55e;
+            --bad-500: #f97316;
+            --ok-bg: rgba(34, 197, 94, .12);
+            --bad-bg: rgba(249, 115, 22, .12);
+        }
+
+        .lead {
+            font-size: 1.1rem;
+            line-height: 1.6
+        }
+
+        .note {
+            margin-top: 1rem;
+            padding: .75rem 1rem;
+            border-radius: .5rem;
+            border: 1px dashed var(--stroke);
+            color: var(--muted)
+        }
+
+        /* Grille Avantages / Inconvénients */
+        .pros-cons {
+            display: grid;
+            gap: 1.25rem
+        }
+
+        @media (min-width: 768px) {
+            .pros-cons {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        /* Listes en cartes */
+        .card-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: .75rem
+        }
+
+        .card {
+            display: flex;
+            gap: .75rem;
+            align-items: flex-start;
+            padding: .9rem 1rem;
+            border-radius: .75rem;
+            background: var(--surface);
+            border: 1px solid var(--stroke)
+        }
+
+        .card.pro {
+            border-left: .45rem solid var(--ok-500);
+            background: var(--ok-bg)
+        }
+
+        .card.con {
+            border-left: .45rem solid var(--bad-500);
+            background: var(--bad-bg)
+        }
+
+        .card .icon {
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: .1rem
+        }
+
+        .card b {
+            color: var(--text)
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            margin: .25rem 0 1rem
+        }
+
+        .section-heading .badge {
+            font-size: .95rem;
+            padding: .15rem .5rem;
+            border-radius: .4rem;
+            border: 1px solid var(--stroke);
+            color: var(--muted)
+        }
+    </style>
+</head>
+
+<body data-page="sources">
+    <div id="top" hidden></div>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Accueil">🌐 Examen d'ETW</a>
+
+            <nav class="site-nav" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="historique.html">Historique</a></li>
+                    <li><a href="url.html">URL</a></li>
+                    <li><a href="web.html">Standards du Web</a></li>
+                    <li><a href="securite.html">Sécurité</a></li>
+                    <li aria-current="page"><a href="sources.html">A propos</a></li>
+                </ul>
+            </nav>
+
+            <button id="btn-theme" class="btn-theme" aria-label="Basculer le mode d’affichage" title="Mode">
+                🌙 <span class="sr-only">Basculer dark/light</span>
+            </button>
+        </div>
+
+        <nav class="breadcrumbs visually-hidden" aria-label="Fil d’Ariane">
+            <ol class="container">
+                <li><a href="index.html">Accueil</a></li>
+                <li aria-current="page">Sources</li>
+            </ol>
+        </nav>
+    </header>
+
+    <main id="contenu" tabindex="-1">
+        <section class="hero reveal" aria-labelledby="titre-info">
+            <div class="container">
+                <h1 id="titre-info">À propos</h1>
+                <p class="lead">
+                    Ce site a été réalisé entièrement à l’aide de l’intelligence artificielle
+                    (ChatGPT, DeepSeek, Claude et Mistral) pour l’examen du cours
+                    d’Environnement et technologie web, dans le cadre d’un BES Webdesign UX/UI.
+                </p>
+            </div>
+        </section>
+
+        <section class="reveal" aria-labelledby="titre-ia">
+            <div class="container">
+                <h2 id="titre-ia" class="section-heading">
+                    Utilisation de l’IA pour créer un site web
+                </h2>
+
+                <div class="pros-cons">
+                    <article aria-labelledby="avantages">
+                        <h3 id="avantages" class="section-heading">Avantages</h3>
+                        <ul class="card-list">
+                            <li class="card pro">
+                                <span class="icon" aria-hidden="true">✅</span>
+                                <div><b>Gain de temps</b> — génération rapide de textes, idées et snippets de code.
+                                </div>
+                            </li>
+                            <li class="card pro">
+                                <span class="icon" aria-hidden="true">📝</span>
+                                <div><b>Aide à la rédaction</b> — reformulation, correction et simplification du
+                                    contenu.</div>
+                            </li>
+                            <li class="card pro">
+                                <span class="icon" aria-hidden="true">🎨</span>
+                                <div><b>Inspiration UX/UI</b> — structures de pages et variantes de design.</div>
+                            </li>
+                            <li class="card pro">
+                                <span class="icon" aria-hidden="true">💡</span>
+                                <div><b>Support technique</b> — exemples HTML/CSS/JS et bonnes pratiques.</div>
+                            </li>
+                            <li class="card pro">
+                                <span class="icon" aria-hidden="true">🕒</span>
+                                <div><b>Disponibilité 24/7</b> — un assistant toujours prêt à itérer.</div>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article aria-labelledby="inconvenients">
+                        <h3 id="inconvenients" class="section-heading">Inconvénients</h3>
+                        <ul class="card-list">
+                            <li class="card con">
+                                <span class="icon" aria-hidden="true">⚠️</span>
+                                <div><b>Erreurs possibles</b> — informations inexactes ou code non optimal sans
+                                    relecture.</div>
+                            </li>
+                            <li class="card con">
+                                <span class="icon" aria-hidden="true">🧩</span>
+                                <div><b>Style générique</b> — contenu peu original si non retravaillé.</div>
+                            </li>
+                            <li class="card con">
+                                <span class="icon" aria-hidden="true">🪝</span>
+                                <div><b>Dépendance</b> — moins d’apprentissage si l’on s’appuie trop sur l’IA.</div>
+                            </li>
+                            <li class="card con">
+                                <span class="icon" aria-hidden="true">📜</span>
+                                <div><b>Aspects légaux</b> — vigilance sur licences, sources et crédits.</div>
+                            </li>
+                            <li class="card con">
+                                <span class="icon" aria-hidden="true">🔒</span>
+                                <div><b>Confidentialité</b> — ne pas partager de données sensibles dans les prompts.
+                                </div>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+
+                <p class="note">
+                    En résumé : l’IA accélère et aide, mais ne remplace pas la vérification humaine,
+                    les tests d’accessibilité et la validation pédagogique.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <a href="#top" class="to-top" aria-label="Remonter en haut">↑</a>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <p>© <span id="year"></span> — Environnement et technologie web - BES Webdesign UX/UI - IFOSUP Wavre -
+                N.Vandervoordt.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
